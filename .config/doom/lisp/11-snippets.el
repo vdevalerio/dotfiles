@@ -26,5 +26,5 @@
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
-         :target (file+head "%<%Y-%m-%d>.org"
+         :target (file+head "%<%Y-%m-%d>.org.gpg"
                             "#+title: %<%Y-%m-%d %A>\n\n"))))

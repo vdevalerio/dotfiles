@@ -1,5 +1,5 @@
 #+TITLE: Snippets & Templates
-#+PROPERTY: header-args:emacs-lisp :tangle ~/.config/doom/lisp/85-snippets.el
+#+PROPERTY: header-args:emacs-lisp :tangle ~/.config/doom/lisp/11-snippets.el
 
 * YASnippet Configuration
 #+begin_src emacs-lisp
@@ -33,6 +33,6 @@
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
-         :target (file+head "%<%Y-%m-%d>.org"
+         :target (file+head "%<%Y-%m-%d>.org.gpg"
                             "#+title: %<%Y-%m-%d %A>\n\n"))))
 #+end_src
