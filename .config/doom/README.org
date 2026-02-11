@@ -1,0 +1,59 @@
+#+TITLE: Deliberate Practice System
+#+AUTHOR: Marcos Valério
+#+DATE: 2026-02-10
+
+* Overview
+
+A Doom Emacs configuration built around *org-mode* and *org-roam* for deliberate
+practice and knowledge work. The system grows incrementally -- only what gets
+used gets built.
+
+Current capabilities:
+- Write and organize notes in org-mode with a clean, readable theme
+- Build a personal knowledge base with org-roam (zettelkasten)
+- Capture thoughts and tasks quickly into an inbox
+- Keep a daily journal through org-roam dailies
+- Encrypt sensitive entries with org-crypt
+- Sync everything to Google Drive via rclone
+
+* File Layout
+
+#+begin_example
+~/.config/doom/
+  config.el               Loads the 5 modules
+  init.el                 Doom module selection
+  packages.el             Extra packages (currently empty)
+
+  literate/               Edit these (auto-tangle on save)
+    99-local.org
+    00-system.org
+    10-thinking.org
+    11-snippets.org
+    90-controls.org
+
+  lisp/                   Generated -- do not edit
+  snippets/               YASnippet templates (org, sh, lua headers)
+#+end_example
+
+* Org Directory
+
+#+begin_example
+~/ssd/documents/org/
+  inbox.org               Capture destination
+  roam/                   Org-roam notes
+    daily/                Daily journal entries
+#+end_example
+
+Synced to Google Drive (=mvx12google:org=) with =SPC o s=.
+
+* Encryption
+
+Entries tagged =:crypt:= are encrypted on save using symmetric (password-based)
+encryption. Auto-save is disabled to prevent leaking plaintext.
+
+Decrypt with =SPC n d= on an encrypted entry.
+
+* Growing the System
+
+This configuration is intentionally minimal. New capabilities are added only
+when a real daily need appears, one small piece at a time.
