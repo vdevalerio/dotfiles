@@ -143,12 +143,19 @@
 #+end_src
 * Sync Org Directory
 #+begin_src emacs-lisp
+(defconst remote_repo "mvx12google")
+(defconst remote_path "org")
+
 (defun dps/org-sync ()
-    "Quick sync: stage all, commit with timestamp, push."
-    (interactive)
-    (let ((default-directory org-directory))
-        (shell-command "git add -A")
-        (shell-command (format "git commit -m 'sync: %s'" (format-time-string "%Y-%m-%d %H:%M")))
-        (shell-command "git push"))
-    (message "Org files synced!"))
+  "Sync local Org directory to Google Drive using rclone silently in the background."
+  (interactive)
+  (message "Rclone: Starting sync...")
+  (let ((process (start-process "rclone-org-sync" nil "rclone" "sync"
+                                (expand-file-name my-org-path)
+                                (concat remote_repo ":" remote_path))))
+    (set-process-sentinel process
+      (lambda (proc event)
+        (cond ((string-match-p "finished" event)
+               (message "Rclone: Sync completed successfully."))
+              (t (message "Rclone: Sync failed (%s)" (string-trim event))))))))
 #+end_src
