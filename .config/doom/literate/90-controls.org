@@ -30,6 +30,12 @@
        :desc "Find daily"          "d" #'org-roam-dailies-goto-date
        :desc "Capture to daily"    "j" #'org-roam-dailies-capture-today))
 #+end_src
+* Org-Crypt
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("n")
+       :desc "Decrypt note"    "d" #'org-decrypt-entry))
+#+end_src
 * Sync
 #+begin_src emacs-lisp
 (map! :leader
