@@ -35,7 +35,6 @@
   display-fill-column-indicator-column 80
   undo-limit 80000000
   evil-want-fine-undo t
-  auto-save-default t
   confirm-kill-emacs nil)
 
 (global-visual-line-mode 1)
@@ -53,20 +52,20 @@
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
 
-(defconst org-path (file-truename "~/ssd/documents/org/"))
-(defconst org-zett (file-truename "~/ssd/documents/org/zettelkasten"))
-(defconst org-dail (file-truename "~/ssd/documents/org/zettelkasten/daily/"))
+(defconst my-org-path (file-truename "~/ssd/documents/org/"))
+(defconst my-org-roam (file-truename "~/ssd/documents/org/roam"))
+(defconst my-org-dail (file-truename "~/ssd/documents/org/roam/daily/"))
 
-(setq org-directory org-path
-      org-roam-directory org-zett
-      org-roam-dailies-directory org-dail
+(setq org-directory my-org-path
+      org-roam-directory my-org-roam
+      org-roam-dailies-directory my-org-dail
   password-cache-expiry 10)
 
 (after! org-roam
   (unless (file-exists-p org-roam-directory)
     (make-directory org-roam-directory t)))
 
-(setq deft-directory org-path
+(setq deft-directory my-org-path
   deft-extensions (list "org")
   deft-recursive t)
 
@@ -85,6 +84,18 @@
 (setq org-roam-node-display-template
     (concat "${title:*} "
         (propertize "${tags:20}" 'face 'org-tag)))
+
+(after! org
+  (require 'org-crypt)
+  ;; Encrypt all entries tagged with "crypt"
+  (org-crypt-use-before-save-magic)
+  ;; Prevent the "crypt" tag from being inherited by sub-headings
+  (setq org-tags-exclude-from-inheritance '("crypt"))
+  ;; Set to nil to use symmetric encryption (password-based)
+  ;; This is best for syncing with mobile devices like Android/iOS
+  (setq org-crypt-key nil)
+  ;; CRITICAL: Disable auto-save for buffers with encrypted text to prevent leaks
+  (setq auto-save-default nil))
 
 (defun dps/write-goto-src-begin ()
   "Jump to the beginning of the source block at point."

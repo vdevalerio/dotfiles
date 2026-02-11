@@ -26,3 +26,12 @@
   (interactive)
   (if dps/write--all-src-hidden (hs-show-all) (hs-hide-all))
   (setq dps/write--all-src-hidden (not dps/write--all-src-hidden)))
+
+(setq-default tab-width 4
+    indent-tabs-mode nil
+    tab-always-indent nil
+    evil-shift-width 4)
+
+(add-hook 'after-change-major-mode-hook
+    (lambda ()
+        (setq tab-width 4)))
