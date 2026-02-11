@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# contributor: Marcos Valério de Carvalho Cardoso Júnior <marcosvaleriox12@hotmail.com>
+# name: Header for Org-Mode notes
+# key: orghdr
+# group: orgmode
+# --
+#+TITLE: ${1:Title}
+#+SUBTITLE: ${2:Subtitle}
+#+DESCRIPTION: ${3:Description}
+#+AUTHOR: `(user-full-name)`
+#+CREATED: `(format-time-string "%Y-%m-%d")`
+#+OPTIONS: ${3:toc:3 ^:t H:3 num:t}
+#+TAGS: ${4: @work(w) @home(h) @idea(i) @meeting(m)}
+#+FILETAGS: ${5::Personal:Learning:}

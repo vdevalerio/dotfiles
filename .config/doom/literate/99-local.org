@@ -1,0 +1,8 @@
+#+TITLE: 99-local
+#+PROPERTY: header-args:emacs-lisp :tangle ~/.config/doom/lisp/99-local.el
+
+* User
+#+begin_src emacs-lisp
+(setq user-full-name "Marcos Valério de Carvalho Cardoso Júnior"
+      user-mail-address "marcosvaleriox12@hotmail.com")
+#+end_src

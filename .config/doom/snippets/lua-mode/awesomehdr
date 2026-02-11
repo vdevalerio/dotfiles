@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Awesome Script Header
+# key: awesomehdr
+# group: awesome
+# --
+--------------------------------------------------------------------------------
+-- FILE:         `(replace-regexp-in-string (expand-file-name "~") "~" (buffer-file-name))`
+-- TITLE:        ${1:AwesomeWM Module/Config Title}
+-- SUBTITLE:     ${2:AwesomeWM Module/Config Subtitle}
+-- AUTHOR:       `(user-full-name)`
+-- CREATED:      `(format-time-string "%Y-%m-%d")`
+-- AWESOME_V:    `(shell-command-to-string "awesome --version 2>&1 | head -1 | grep -oE '[0-9]+\.[0-9]+' | tr -d '\n'")`
+-- PURPOSE:      ${3:Purpose of this Lua script/module for AwesomeWM.}
+-- REQUIRES:     ${4:any_required_libraries_or_modules}
+-- NOTES:        ${5:Any specific notes or usage instructions.}
+--------------------------------------------------------------------------------
+$0

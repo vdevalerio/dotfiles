@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Header for Shell/Bash/Zsh scripts
+# key: shhdr
+# group: shhdr
+# --
+################################################################################
+# FILE:         `(replace-regexp-in-string (expand-file-name "~") "~" (buffer-file-name))`
+# TITLE:        ${1:File Title}
+# AUTHOR:       `(user-full-name)`
+# CREATED:      `(format-time-string "%Y-%m-%d")`
+# PURPOSE:      ${2:Purpose of this file.}
+# SHELL:        ${3:POSIX sh / Bash / Zsh}
+# NOTES:        ${4:Any notes.}
+################################################################################
+$0
